@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Team of Idiots</title>
+  <meta name="description" content="Enterprise rigour. Zero corporate theatre.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;800&family=Space+Grotesk:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --toi-bg:        #001829;
+      --toi-bg-deep:   #00080F;
+      --toi-text:      #EEF3F6;
+      --toi-muted:     #8FA3B0;
+      --toi-faint:     #566975;
+      --toi-pink:      #EB1E4E;
+      --toi-border:    rgba(255,255,255,0.07);
+    }
+
+    html, body {
+      height: 100%;
+    }
+
+    body {
+      background: linear-gradient(180deg, var(--toi-bg) 0%, var(--toi-bg-deep) 100%);
+      color: var(--toi-text);
+      font-family: 'Space Grotesk', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Grid background */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
+      background-size: 68px 68px;
+      -webkit-mask-image: radial-gradient(80% 70% at 50% 45%, #000 20%, transparent 80%);
+      mask-image: radial-gradient(80% 70% at 50% 45%, #000 20%, transparent 80%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Pink corner glow */
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background: radial-gradient(60% 50% at 100% 0%, rgba(235,30,78,0.10) 0%, transparent 55%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    nav {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 22px clamp(24px, 4vw, 48px);
+      border-bottom: 1px solid var(--toi-border);
+    }
+
+    .wordmark {
+      display: block;
+      width: 200px;
+      height: 30px;
+    }
+
+    .nav-status {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      color: var(--toi-faint);
+      text-transform: uppercase;
+    }
+
+    main {
+      position: relative;
+      z-index: 1;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      max-width: 1280px;
+      width: 100%;
+      margin: 0 auto;
+      padding: clamp(64px, 10vw, 120px) clamp(24px, 4vw, 48px);
+    }
+
+    .eyebrow {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.10em;
+      color: var(--toi-faint);
+      text-transform: uppercase;
+      margin-bottom: 28px;
+    }
+
+    h1 {
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 800;
+      font-size: clamp(52px, 11vw, 148px);
+      line-height: 0.88;
+      letter-spacing: -0.04em;
+      text-transform: uppercase;
+      color: var(--toi-text);
+      margin-bottom: 36px;
+    }
+
+    .laser-rule {
+      width: min(480px, 70%);
+      height: 1px;
+      background: linear-gradient(
+        90deg,
+        var(--toi-pink) 0%,
+        rgba(235,30,78,0.4) 60%,
+        transparent 100%
+      );
+      box-shadow: 0 0 6px rgba(235,30,78,0.5);
+      margin-bottom: 32px;
+    }
+
+    .body-copy {
+      font-size: clamp(15px, 2vw, 17px);
+      line-height: 1.6;
+      color: var(--toi-muted);
+      max-width: 52ch;
+    }
+
+    footer {
+      position: relative;
+      z-index: 1;
+      padding: 24px clamp(24px, 4vw, 48px);
+      border-top: 1px solid var(--toi-border);
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .footer-text {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      font-weight: 400;
+      letter-spacing: 0.04em;
+      color: var(--toi-faint);
+    }
+
+    .footer-dot {
+      color: var(--toi-pink);
+      text-shadow: 0 0 6px rgba(235,30,78,0.6);
+    }
+
+    @media (max-width: 480px) {
+      .nav-status { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <svg class="wordmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 48" fill="none" aria-label="Team of Idiots">
+      <defs>
+        <filter id="laser" x="-50%" y="-50%" width="200%" height="200%">
+          <feGaussianBlur stdDeviation="2.2" result="b"/>
+          <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+        </filter>
+      </defs>
+      <text x="0" y="33" font-family="'JetBrains Mono', ui-monospace, monospace" font-size="26" font-weight="800" letter-spacing="-1" fill="#EEF3F6">TEAM_OF_IDIOTS</text>
+      <circle cx="294" cy="30" r="6.5" fill="#EB1E4E" filter="url(#laser)"/>
+    </svg>
+    <span class="nav-status">[ in build ]</span>
+  </nav>
+
+  <main>
+    <p class="eyebrow">team_of_idiots<span style="color:var(--toi-pink); text-shadow:0 0 6px rgba(235,30,78,0.5);">.</span> &nbsp;·&nbsp; est. 2026</p>
+    <h1>SOMETHING<br>IS BEING<br>BUILT HERE<span style="color:var(--toi-pink); text-shadow:0 0 10px rgba(235,30,78,0.6);">.</span></h1>
+    <div class="laser-rule"></div>
+    <p class="body-copy">Enterprise rigour. Zero corporate theatre. We take the work seriously. Just never ourselves.</p>
+  </main>
+
+  <footer>
+    <span class="footer-text">team_of_idiots<span class="footer-dot">.</span> &nbsp;·&nbsp; © 2026</span>
+  </footer>
+
+</body>
+</html>
